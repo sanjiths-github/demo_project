@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+
+
+import Homepage from './pages/Homepage';
+import Contactpage from './pages/Contactpage';
+import Pricingpage from './pages/Pricingpage';
+import Quarterlypage from './pages/Quarterlypage';
+import Headshotpage from './pages/Headshotpage';
+import Videopages from './pages/Videopages';
+import Photographypage from './pages/Photographypage';
+
+
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <ScrollToTop />
+
+      <Routes>
+        <Route path='/' element={<Homepage />} />
+        <Route path='/contact' element={<Contactpage />} />
+        <Route path='/pricing' element={<Pricingpage />} />
+        <Route path='/packages' element={<Quarterlypage />} />
+        <Route path='/headshot' element={<Headshotpage />} />
+        <Route path='/video' element={<Videopages />} />
+        <Route path='/photography' element={<Photographypage />} />
+
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
